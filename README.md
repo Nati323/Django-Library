@@ -1,4 +1,4 @@
-# Library Project (v2)
+# Django Library Project (v2)
 
 * Our user is the librarian, and the customers aren't able to login.
 
