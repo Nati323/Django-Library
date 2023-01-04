@@ -1,0 +1,101 @@
+body{
+    background: hsl(0, 0%, 7%);
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+
+    
+    flex-direction: column;
+}
+
+a[id^='model_'], a[id*=' model_']{
+    background-color: hsl(0, 0%, 11%);
+    cursor: pointer;
+    width: 10rem;
+    height: 10rem;
+
+    position: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+
+    padding: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 50%;
+}
+a[id^='model_'] i, a[id*=' model_'] i{
+    color: gray;
+}
+
+a[id^='model_'] p, a[id*=' model_'] + p{
+    color: white;
+}
+
+a[id^='model_']:hover, a[id*=' model_']:hover{
+    background-color: hsl(0, 0%, 13%);
+}
+
+.action_table{
+    background-color: hsl(0, 0%, 10%);
+}
+.action_table:hover{
+    background-color: hsl(0, 0%, 7%);
+}
+.action_delete:hover{
+    background-color: hsl(0, 86%, 22%);
+}
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    text-align: left;   
+}
+
+form input{
+    margin-bottom: .2rem;
+    margin-top:    .2rem;
+}
+form label{
+    color: #cbcbcb;
+    font-size: 1.2rem;
+
+    margin-bottom: .4rem;
+}
+
+input{
+    border-radius: 7px;
+}
+
+input:active{
+    border: 1px solid red;
+}
+
+
+input[type=radio]:checked + label:after {
+    opacity: 1;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=number] {
+    width: 14rem;
+    height: 36px;
+    /* margin: 13px 0 0 -5px; */
+    margin-bottom: 1.2rem;
+    margin-top: .3rem;
+    padding-left: 10px; 
+    border-radius: 3px 5px 5px 3px;
+    border: solid 1px #cbc9c9; 
+    box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+    background: #fff; 
+
+    background-color: hsl(0, 0%, 13%);;
+    box-shadow: none;            
+    border: none;
+    color: #6d6d6d;
+}

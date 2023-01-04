@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+   
+   <head>
+      <link rel="stylesheet" href="{% static 'library/style.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+      
+      <script src="https://cdn.tailwindcss.com"></script>
+      
+
+   </head>
+   <body>
+        <header class="flex w-full px-12 py-6 items-center" style="background-color: #1c1c1c;">
+            <a   class="flex-start text-white text-3xl" href="{% url 'index' %}">Library</a>
+            <div class="absolute right-12" id="nav_group">
+            <!-- flex flex-row flex-end gap-x-6 -->
+                <a href="{% url 'index' %}"          class="mr-6 text-gray-500 hover:text-gray-300">Home</a>
+                <a href="{% url 'customers_list' %}" class="mr-6 text-gray-500 hover:text-gray-300">Customers</a>
+                <a href="{% url 'books_list' %}"     class="mr-6 text-gray-500 hover:text-gray-300">Books</a>
+                <a href="{% url 'loans_list' %}"     class="mr-6 text-gray-500 hover:text-gray-300">Loans</a>
+            </div>
+        </header>
+        
+        <div id="base">{% block content %} {% endblock %}</div>
+        
+        {% comment %} Sidebar for navigation {% endcomment %}
+        {% comment %}
+        <div class="absolute top-12 right-0 pr-12 flex gap-y-2 flex-col justify-center items-center">
+            <a href="{% url 'index' %}">
+                <div class="bg-gray-800 p-2 px-8 rounded-md text-gray-500 hover:text-gray-300 text-sm text-left flex flex-row justify-center items-center" style="background-color: #1c1c1c;">
+                    <i class="fa-solid fa-feather-pointed text-lg"></i>
+                    <p class="ml-2 text-left">Index</p>
+                </div>
+            </a>
+
+            <a href="{% url 'index' %}">
+                <div class="bg-gray-800 p-2 px-8 rounded-md text-gray-500 hover:text-gray-300 text-sm text-left flex flex-row justify-center items-center" style="background-color: #1c1c1c;">
+                    <i class="fa-solid fa-feather-pointed text-lg"></i>
+                    <p class="ml-2 text-left">Index</p>
+                </div>
+            </a>
+            <a href="{% url 'create_poll' %}">Add Question</a>
+            <a href="{% url 'delete_poll' %}">Delete Question(s)</a>
+        </div>
+        {% endcomment %}
+        {% comment %} <footer>Powered by Django</footer> {% endcomment %}
+   </body>
+
+</html>
