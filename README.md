@@ -1,7 +1,8 @@
 # Django Library Project (v2)
 ![image](https://user-images.githubusercontent.com/121944905/210630012-1d9a4290-4497-4b81-aaba-de2d7c692718.png)
 ![image](https://user-images.githubusercontent.com/121944905/210630832-236d1f4e-06c2-4b21-9b4e-c50bad2a303f.png)
-![image](https://user-images.githubusercontent.com/121944905/210630929-a658c71e-dfbe-4133-9c8c-e05a00ff1e75.png)
+![image](https://user-images.githubusercontent.com/121944905/210631149-dfb7af2c-7f0b-4f31-879d-9444ff3676d7.png)
+
 
 
 * Our user is the librarian, and the customers aren't able to login.
