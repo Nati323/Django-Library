@@ -1,12 +1,21 @@
 {% extends 'library/base.html' %}
 {% block content %}
 
+
+<!-- Main container -->
+<div style="background-color: hsl(0, 0%, 9%);" class="relative w-[50rem] h-[35rem] rounded-lg mt-16 p-12">
+
+    <div class="flex gap-x-1 items-center text-sm mb-4">
+        <span href="{% url 'index' %}" class="text-gray-600">Home</span>
+    </div>
+
 <h1 class="text-center text-3xl text-white font-medium mt-16">Welcome back, Me!</h1>
 <p  class="text-center text-base text-gray-500">This page will soon be accessible only by librarians (users)</p>
-<div id="models_data"    class="mt-12 w-full grid justify-center items-center grid-cols-3 gap-x-6">
+<div id="models_data"    class="mt-12 w-full grid justify-center items-center place-content-evenly grid-cols-3 gap-x-6">
     <!-- Display all available models dynamically -->
 </div>
 
+</div>
 
 <script>
     // Render models dynamically into the '#models_data' div
