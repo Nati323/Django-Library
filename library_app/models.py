@@ -9,8 +9,9 @@ start_date = datetime.date(year=2015, month=1, day=1)
 
 
 class Customer(models.Model):
-    name      =  models.CharField(max_length=50,  default=fake.name())
-    address   =  models.CharField(max_length=200, default=fake.address())
+    name    =  models.CharField(max_length=50,  default=fake.name())
+    address =  models.CharField(max_length=200, default=fake.address())
+    age     = models.PositiveIntegerField()
     # email     =  models.EmailField(default=None, blank=True)               # Allowing this field to be blank (None by default)
     # phone     =  models.CharField(max_length=20, default=None, blank=True) # Allowing this field to be blank (None by default)
 
@@ -19,10 +20,17 @@ class Customer(models.Model):
 class Book(models.Model):
     name         = models.CharField(max_length=200, default=fake.name())
     author       = models.CharField(max_length=200, default=fake.name())
-    in_stock     = models.PositiveIntegerField(default=0)
-    published_at = models.DateTimeField(default=fake.date_between(start_date=start_date, end_date='-5y'))
+    genre        = models.CharField(max_length=45)
+    copies       = models.PositiveIntegerField(default=0)
     created_at   = models.DateTimeField('date published', auto_now_add=True)
-    
+    published_at = models.DateTimeField(default=fake.date_between(start_date=start_date, end_date='-5y'))
+
+    class meta:
+        ordering = ['-created']
+
+    def __str__(self):
+        return self.name
+
     def was_published_recently(self):
         """
         Check if book was published recently
@@ -58,7 +66,8 @@ class Book(models.Model):
         return False
     
 class Loan(models.Model):
-    book_id    = models.ForeignKey(Book, on_delete=models.CASCADE)
-    type_id    = models.CharField(max_length=1)
-    amount     = models.IntegerField()
-    started_at = models.DateField(auto_now_add=True)
+    customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    book_id     = models.ForeignKey(Book, on_delete=models.CASCADE)
+    type_id     = models.CharField(max_length=1)
+    loaned_at   = models.DateField(auto_now_add=True)
+    return_date = models.DateField(auto_now_add=True)
