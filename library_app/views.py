@@ -6,19 +6,23 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.views import View
 # from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render
 # from datetime import datetime
+from django.shortcuts import render
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
+
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from library_app.forms import CreateBookForm
-from .models import Book, Loan
+from .models import Book, Loan, User
 # from .forms import CreateBookForm
 
 
 class IndexView(generic.View):
     """
-    Perhaps have all of the available actions displayed in this page by category
+    Render the index.html template
+    The file displays all models
     """
 
     def get(self, request):
@@ -187,3 +191,49 @@ class Logout(View):
     Log the user out
     """
     pass
+
+
+def login_page(request):
+    page = 'login_page'
+    
+    # if request.user.is_authenticated:  #a logged in user cant manually go to login page.
+    #     return redirect('index')
+    
+    if request.method == 'POST':
+        username = request.POST.get('username').lower()
+        password = request.POST.get('password')
+        
+        try:
+            user = User.objects.get(username=username, password=password)
+        except:
+            # messages.error(request, "User does not exist")
+            return HttpResponse('user does not existttttttttt')   #<<<<<<<
+            
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+        else:
+            return HttpResponse('user/password does not exist')
+        
+    context = {'page': page}
+    return render(request, 'app/login_register_page.html', context)
+        
+        
+def logout_page(request):
+    logout(request)
+    return redirect('index')
+
+
+# def register_page(request):
+    # form = UserCreationForm()
+    
+    # if form.is_valid():
+    #     user = form.save()   #<< commit false
+    #     user.username = user.username.lower()
+    #     user.save()
+    #     login(request, user)
+    #     return redirect('index')
+    # else:
+    #     return HttpResponse('ann error occured during registeration')
+    
+    # context = {'form': form}
