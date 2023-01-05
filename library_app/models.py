@@ -6,7 +6,7 @@ from faker import Faker # Used to fake data for easier testing
 fake = Faker()
 start_date = datetime.date(year=2015, month=1, day=1)
 
-
+# 
 
 class Customer(models.Model):
     name    =  models.CharField(max_length=50,  default=fake.name())
