@@ -24,28 +24,6 @@
         </header>
         
         <div id="base">{% block content %} {% endblock %}</div>
-        
-        {% comment %} Sidebar for navigation {% endcomment %}
-        {% comment %}
-        <div class="absolute top-12 right-0 pr-12 flex gap-y-2 flex-col justify-center items-center">
-            <a href="{% url 'index' %}">
-                <div class="bg-gray-800 p-2 px-8 rounded-md text-gray-500 hover:text-gray-300 text-sm text-left flex flex-row justify-center items-center" style="background-color: #1c1c1c;">
-                    <i class="fa-solid fa-feather-pointed text-lg"></i>
-                    <p class="ml-2 text-left">Index</p>
-                </div>
-            </a>
-
-            <a href="{% url 'index' %}">
-                <div class="bg-gray-800 p-2 px-8 rounded-md text-gray-500 hover:text-gray-300 text-sm text-left flex flex-row justify-center items-center" style="background-color: #1c1c1c;">
-                    <i class="fa-solid fa-feather-pointed text-lg"></i>
-                    <p class="ml-2 text-left">Index</p>
-                </div>
-            </a>
-            <a href="{% url 'create_poll' %}">Add Question</a>
-            <a href="{% url 'delete_poll' %}">Delete Question(s)</a>
-        </div>
-        {% endcomment %}
-        {% comment %} <footer>Powered by Django</footer> {% endcomment %}
    </body>
 
 </html>

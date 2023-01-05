@@ -1,42 +1,15 @@
 {% extends 'library/base.html' %}
 {% block content %}
 
-{% comment %} 
-'main_container' may not be necessary since there are no actions now, consider removing... YES, NOT NECESSARY!
-{% endcomment %}
-{% comment %} <div     id="main_container" class="h-full flex justify-center items-center mt-12"> {% endcomment %}
 <h1 class="text-center text-3xl text-white font-medium mt-16">Welcome back, Me!</h1>
 <p  class="text-center text-base text-gray-500">This page will soon be accessible only by librarians (users)</p>
-    <div id="models_data"    class="mt-12 w-full grid justify-center items-center grid-cols-3 gap-x-6">
-        {% comment %} <div id="models_actions"> {% endcomment %}
-            {% comment %} 
-                Display here dynamically all the models' actions, render a specific compoennt foreach action
-            {% endcomment %}
-        {% comment %} </div> {% endcomment %}
-    </div>
+<div id="models_data"    class="mt-12 w-full grid justify-center items-center grid-cols-3 gap-x-6">
+    <!-- Display all available models dynamically -->
+</div>
 
-
-{% comment %} </div> {% endcomment %}
-
-
-
-
-{% comment %} 
-
-* Make a grid div with 3 boxes
-
-    Customers
-    Books
-    Loans
-
-* OnClick, Make action selection for each box w/ icons (List all, View details, Create, Delete)
-
-
-
-
-{% endcomment %}
 
 <script>
+    // Render models dynamically into the '#models_data' div
     const availableModels = [
         {
             'name':  'Customer',
@@ -75,75 +48,27 @@
     ]
     
 
-{% comment %}   
+    const ModelsDataDiv    = document.getElementById("models_data")
 
-Moved all actions to it's own view, display it all there.
-For example: /books/ will display all available actions for books, will be redirected to that view on click of the <a> element.
+    availableModels.forEach(model => {
 
-
-{% endcomment %}
-const ModelsDataDiv    = document.getElementById("models_data")
-{% comment %} const ModelsActionsDiv = document.getElementById("models_actions") {% endcomment %}
-{% comment %} ModelsActionsDiv.style.display = "none"; // not visible by default {% endcomment %}
-
-availableModels.forEach(model => {
-
-    const newModelDiv = document.createElement('a');
-        newModelDiv.id        = 'model_' + model.name.toLowerCase();
-        newModelDiv.href      = model.route;
-        // Add a ring on focus, doens't seem to work when trying to assign it using hte .class property
-        //newModelDiv.class     = 'flex flex-col items-center justify-center items-center text-center focus:ring-white focus:ring-offset-2 focus:ring-2';
-        newModelDiv.style     = 'display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center'
-        newModelDiv.innerHTML = `
-            <i class="${model.icon} text-3xl"></i>
-            
-            <p class="text-center text-xl mt-2">${model.name}s</p>
-            `
+        const newModelDiv = document.createElement('a');
+            newModelDiv.id        = 'model_' + model.name.toLowerCase();
+            newModelDiv.href      = model.route;
+            // Add a ring on focus, doens't seem to work when trying to assign it using hte .class property
+            //newModelDiv.class     = 'flex flex-col items-center justify-center items-center text-center focus:ring-white focus:ring-offset-2 focus:ring-2';
+            newModelDiv.style     = 'display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center'
+            newModelDiv.innerHTML = `
+                <i class="${model.icon} text-3xl"></i>
+                
+                <p class="text-center text-xl mt-2">${model.name}s</p>
+                `
 
     ModelsDataDiv.append(newModelDiv);
 
 
 })
-
-    {% comment %} function renderActionsForModels(){ {% endcomment %}
-        {% comment %} const ModelsDataDiv = document.getElementById("models_actions")
-
-        availableModels.forEach(model => {
-        
-            const newModelDiv = document.createElement('div');
-            newModelDiv.id    = `${model.toLowerCase()}_actions`;
-            newModelDiv.class = 'grid grid-rows-4'
-        
-            ModelsDataDiv.append(newModelDiv);
-        
-            
-            // const ActionsDiv = document.getElementById(`${model.toLowerCase()}_actions`);
-            
-            availableActions.forEach(action => {
-
-                const newAction = document.createElement('a'); // changed from div
-                newAction.id = `action_${action.name.toLowerCase().split(' ').join('_')}`;
-                newAction.class = `flex flex-row text-center items-center justify-center p-6 mb-2 rounded-xl`
-                newAction.style = `background-color: hsl(0, 0%, 11%)`
-            
-                newAction.innerHTML = `
-                    <i class="fa-solid fa-feather-pointed text-lg mr-2"></i>
-                    
-                <!-- Renders the model with s at the end only for the 'Display all' action -->
-                <p class="text-sm text-center">${action.name} ${action.name === 'Display all' ? model + 's' : model}</p>
-                `
-                
-                <!-- Append action to div -->
-                newModelDiv.append(newAction);
-            })
-        }) {% endcomment %}
-
-
-    
-    {% comment %} } {% endcomment %}
-    
-    
-    </script>
+</script>
     
 
 
